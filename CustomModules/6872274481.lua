@@ -6207,7 +6207,7 @@ run(function()
 	local oldc1
 	local oldfunc
 	local nobob = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		Name = "NoBob",
+		Name = "NoBobulation",
 		Function = function(callback)
 			local viewmodel = gameCamera:FindFirstChild("Viewmodel")
 			if viewmodel then
