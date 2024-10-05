@@ -5073,6 +5073,32 @@ run(function()
 		Function = function(callback) if FPSBoost.Enabled then FPSBoost.ToggleButton(false) FPSBoost.ToggleButton(false) end end
 	})
 end)
+																																																																																																								
+run(function()
+    local Disabler = {Enabled = false}
+    Disabler = GuiLibrary.ObjectsThatCanBeSaved.WorldWindow.Api.CreateOptionsButton({
+        Name = "InfiniteJump", 
+        Function = function(callback)
+            if callback then
+                local UserInputService = game:GetService("UserInputService")
+                local player = game.Players.LocalPlayer
+                local character = player.Character or player.CharacterAdded:Wait()
+                local humanoid = character:WaitForChild("Humanoid")
+
+                UserInputService.JumpRequest:Connect(function()
+                    if Disabler.Enabled then
+                        humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+                    end
+                end)
+
+                Disabler.Enabled = true
+            else
+                Disabler.Enabled = false
+            end
+        end,
+        HoverText = "Allows Humanoid To Jump Infinitely"
+    })
+end)																																																																																																								
 
 run(function()
 	local GameFixer = {Enabled = false}
